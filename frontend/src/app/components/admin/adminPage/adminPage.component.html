@@ -1,0 +1,27 @@
+<div class="page-title">
+    <app-pageTitle [main]="'Administração do Sistema'" [icon]="'fa fa-cogs'"></app-pageTitle>
+    <div class="admin-pages-tabs">
+        <mat-card>
+          <mat-card-content>
+            <mat-tab-group>
+              <mat-tab label="Produto">
+                <div class="p-3">
+                  <i>Produtos</i>
+                </div>
+              </mat-tab>
+              <mat-tab label="Categoria">
+                <div class="p-3">
+                  <app-categoriesAdmin></app-categoriesAdmin>
+                </div>
+              </mat-tab>
+              <mat-tab label="Usuario">
+                <div class="p-3">
+                  <app-userAdmin></app-userAdmin>
+                </div>
+              </mat-tab>
+            </mat-tab-group>
+          </mat-card-content>
+        </mat-card>
+      </div>
+      
+</div>

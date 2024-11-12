@@ -1,0 +1,55 @@
+* {
+  font-family: "Lato", sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: grid;
+  grid-template-rows: 60px 1fr 40px;
+  grid-template-columns: 300px 1fr;
+  grid-template-areas:
+    "header header"
+    "menu content"
+    "menu footer";
+  height: 100vh;
+  width: 100vw;
+}
+
+#app.hide-menu {
+  grid-template-areas:
+    "header header"
+    "content content"
+    "footer footer";
+}
+
+app-header, app-menu, app-content, app-footer {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+app-header {
+  grid-area: header;
+  background-color: #f8f8f8;
+}
+
+app-menu {
+  grid-area: menu;
+  background-color: #f0f0f0;
+}
+
+app-content {
+  grid-area: content;
+  background-color: #fff;
+}
+
+app-footer {
+  grid-area: footer;
+  background-color: #f8f8f8;
+}

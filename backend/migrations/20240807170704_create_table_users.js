@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     table.string('email').notNull().unique()
     table.string('password').notNull()
     table.string('imageUrl', 1000)
+    table.string('balance', 1000)
     table.boolean('admin').notNull().defaultTo(false)
   })
 };

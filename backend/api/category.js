@@ -19,12 +19,12 @@ module.exports = app=> {
             app.db('categories')
             .update(category)
             .where({id: category.id})
-            .then(_ => res.status(204).send())
+            .then(_ => res.status(200).json({success: true}))
             .catch(err => res.status(500).send(err)) 
         }else{
             app.db('categories')
             .insert(category)
-            .then(_ => res.status(204).send())
+            .then(_ => res.status(201).json({success: true}))
             .catch(err => res.status(500).send(err))
             
         }

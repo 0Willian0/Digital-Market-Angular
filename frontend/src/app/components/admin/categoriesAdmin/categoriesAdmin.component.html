@@ -1,0 +1,98 @@
+<div class="categories-admin">
+    <form [formGroup]="categoryForm">
+      <input type="hidden" formControlName="id" />
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <div class="form-group">
+            <label for="category-name">Nome:</label>
+            <input
+              type="text"
+              id="category-name"
+              formControlName="name"
+              class="form-control"
+              [readonly]="mode === 'remove'"
+              placeholder="Informe o Nome da Categoria..."
+              required
+            />
+          </div>
+        </div>
+  
+        <div class="col-md-6 col-sm-12">
+          <div class="form-group">
+            <label for="category-parent">Categoria Pai:</label>
+            <select
+              id="category-parent"
+              formControlName="parentId"
+              class="form-control"
+              [disabled]="mode === 'remove'"
+            >
+              <option value="">Selecione...</option>
+              <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+  
+      <div class="row mt-3">
+        <div class="col-xs-12">
+          <button
+            *ngIf="mode === 'save'"
+            type="button"
+            class="btn btn-success"
+            (click)="save()"
+            [disabled]="categoryForm.invalid"
+          >
+            Salvar
+          </button>
+          
+          <button
+            *ngIf="mode === 'remove'"
+            type="button"
+            class="btn btn-danger"
+            (click)="remove()"
+          >
+            Excluir
+          </button>
+          
+          <button type="button" class="btn btn-secondary ml-1" (click)="reset()">Cancelar</button>
+        </div>
+      </div>
+    </form>
+  
+    <hr />
+  
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th *ngFor="let field of fields">{{ field.label }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="categories.length === 0">
+          <td [attr.colspan]="fields.length">Nenhum dado disponível</td>
+        </tr>
+        <tr *ngFor="let category of categories">
+          <td>{{ category.id }}</td>
+          <td>{{ category.name }}</td>
+          <td>{{ getParentCategoryName(category.parentId) }}</td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-warning btn-sm mr-1"
+              (click)="loadCategory(category, 'save')"
+            >
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger btn-sm"
+              (click)="loadCategory(category, 'remove')"
+            >
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
