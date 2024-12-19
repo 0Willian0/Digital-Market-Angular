@@ -1,10 +1,10 @@
-<div id="app"[class.hide-menu]="(isMenuVisible$ | async)">
-        <app-header [title]="'Digital Market'"></app-header>
-    
-        <app-menu></app-menu>
-    
-        <app-content>
-        </app-content>
-    
-        <app-footer></app-footer>
+<div id="app" [class.hide-menu]="shouldHide()">
+  <app-header [title]="'Digital Market'" [hideToggle]="shouldHide()" [hideUserDropdown]="shouldHide()" [hideLink]="shouldHide()"></app-header>
+
+  <app-menu></app-menu>
+
+  <app-content>
+  </app-content>
+
+  <app-footer></app-footer>
 </div>

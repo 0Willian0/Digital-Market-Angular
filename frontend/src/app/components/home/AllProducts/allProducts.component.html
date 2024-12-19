@@ -1,0 +1,7 @@
+<div class="products-by-category">
+    <ul>
+        <li *ngFor="let product of products" [attr.key]="product.id">
+          <app-productItem [product]="product"></app-productItem>
+        </li>
+    </ul>  
+</div>

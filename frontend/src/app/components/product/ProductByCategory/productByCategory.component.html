@@ -1,0 +1,9 @@
+<div class="products-by-category">
+    <app-pageTitle [icon]="'fa fa-folder-o'" [main]="categories?.name"/>
+    <br>
+    <ul>
+        <li *ngFor="let product of products" [attr.key]="product.id">
+          <app-productItem [product]="product"></app-productItem>
+        </li>
+    </ul>  
+</div>

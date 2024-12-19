@@ -1,3 +1,20 @@
-<aside class="menu">
-    
+<aside class="menu" [hidden]="isMenuVisible$ | async">
+  <div class="menu-filter">
+    <nz-input
+      [(ngModel)]="treeFilter"
+      (ngModelChange)="onFilterChange($event)"
+      [nzSuffix]="suffixIcon"
+      nzPlaceHolder="Digite para filtrar..."
+      nzSize="large">
+    </nz-input>
+    <ng-template #suffixIcon>
+      <i nz-icon nzType="search"></i>
+    </ng-template>
+  </div>
+
+  <nz-tree
+    [nzData]="filteredTreeData"
+    nzDefaultExpandAll
+    (nzClick)="onNodeSelect($event)">
+  </nz-tree>
 </aside>

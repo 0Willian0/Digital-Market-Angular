@@ -13,12 +13,28 @@
     color: #FFF;
     text-decoration: none;
   }
-  
+
+  .ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected{
+    background-color: transparent;
+  }
+
+  .ant-tree .ant-tree-node-content-wrapper:hover{
+    background-color: gray;
+  }
+
+  .ant-tree-indent:hover{
+    background-color: transparent;
+  }
+
   .menu .tree-node.selected > .tree-content,
   .menu .tree-node .tree-content:hover{
     background-color: rgba(255,255,255,0.2);
   }
-  
+
+  .nz-tree-node:hover{
+    background-color: transparent;
+  }
+
   .tree-arrow.has-child{
     filter: brightness(2);
   }
@@ -88,7 +104,7 @@
   .ant-input:hover{
     background-color: transparent;
   }
-  
+
   .ant-input::placeholder{
     color:#FFF;
   }

@@ -1,0 +1,100 @@
+<div class="products-admin">
+    <form [formGroup]="productForm">
+      <input type="hidden" formControlName="id" />
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="name">Nome:</label>
+            <input
+              type="text"
+              id="name"
+              class="form-control"
+              formControlName="name"
+              [readonly]="mode === 'remove'"
+              placeholder="Informe o Nome do Produto..."
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="price">Preço:</label>
+            <input
+              type="text"
+              id="price"
+              class="form-control"
+              formControlName="price"
+              [readonly]="mode === 'remove'"
+              placeholder="Informe o Preço do Produto..."
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="imageUrl">Imagem (URL):</label>
+            <input
+              type="text"
+              id="imageUrl"
+              class="form-control"
+              formControlName="imageUrl"
+              [readonly]="mode === 'remove'"
+              placeholder="Informe a URL da Imagem..."
+            />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="categoryId">Categoria:</label>
+            <select
+              id="categoryId"
+              class="form-control"
+              formControlName="categoryId"
+              [disabled]="mode === 'remove'"
+            >
+              <option value="">Selecione...</option>
+              <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-12">
+          <button *ngIf="mode === 'save'" class="btn btn-success" (click)="save()">Salvar</button>
+          <button *ngIf="mode === 'remove'" class="btn btn-danger" (click)="remove()">Excluir</button>
+          <button class="btn btn-secondary ml-1" (click)="reset()">Cancelar</button>
+        </div>
+      </div>
+    </form>
+    <hr />
+    <table class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th *ngFor="let field of fields">{{ field.label }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="products.length === 0">
+          <td [attr.colspan]="fields.length">Nenhum dado disponível</td>
+        </tr>
+        <tr *ngFor="let product of products">
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>
+            <button class="btn btn-warning mr-1" (click)="loadProduct(product, 'save')">
+              <i class="fa fa-pencil"></i>
+            </button>
+            <button class="btn btn-danger" (click)="loadProduct(product, 'remove')">
+              <i class="fa fa-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noData>
+      <tr>
+        <td colspan="4">Nenhum dado disponível</td>
+      </tr>
+    </ng-template>
+  </div>
+  

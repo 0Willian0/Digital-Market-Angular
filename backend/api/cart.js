@@ -21,26 +21,26 @@ module.exports = app =>{
                     user_id: req.params.id1,
                     product_id: req.params.id2
                 })
-                .first();  // Obtém o primeiro registro que corresponde às condições
+                .first();  
         
             if (record) {
                 const rowsDeleted = await app.db('carts')
                     .where({
-                        id: record.id  // Usa o ID do registro para garantir a exclusão correta
+                        id: record.id 
                     })
                     .del();
         
                 if (rowsDeleted > 0) {
-                    res.status(204).send();  // Sucesso: 204 No Content
+                    res.status(204).send(); 
                 } else {
-                    res.status(404).send({ message: 'No matching record found' });  // Erro: 404 Not Found
+                    res.status(404).send({ message: 'No matching record found' });  
                 }
             } else {
-                res.status(404).send({ message: 'No matching record found' });  // Erro: 404 Not Found
+                res.status(404).send({ message: 'No matching record found' });  
             }
         } catch (error) {
-            console.error('Error:', error);  // Log de erro para depuração
-            res.status(500).send({ error: 'Internal Server Error' });  // Erro: 500 Internal Server Error
+            console.error('Error:', error);  
+            res.status(500).send({ error: 'Internal Server Error' });  
         }
     }
 

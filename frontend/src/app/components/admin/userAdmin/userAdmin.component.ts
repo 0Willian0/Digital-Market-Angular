@@ -63,7 +63,7 @@ export class userAdminComponent implements OnInit{
   }
 
   save() {
-    const user = {
+    const user:any = {
       name: this.userForm.get('name')?.value || '',
       email: this.userForm.get('email')?.value || '',
       balance: parseFloat(this.userForm.get('balance')?.value) || 0,
@@ -72,6 +72,12 @@ export class userAdminComponent implements OnInit{
       password: this.userForm.get('password')?.value || '',
       confirmPassword: this.userForm.get('confirmPassword')?.value || '',
     };
+
+    const id = this.userForm.get('id')?.value;
+
+    if (id) {
+        user.id = id;
+    }
 
     this.apiService.saveUser(user).pipe(
         catchError((error) => {

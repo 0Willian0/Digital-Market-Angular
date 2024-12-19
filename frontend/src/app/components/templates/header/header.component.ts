@@ -6,18 +6,23 @@ import { AppState } from '../../../config/store/app.reducer';
 import { selectIsMenuVisible } from '../../../config/store/app.selectors';
 import { userDropdownComponent } from '../userDropdown/userDropdown.component';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { userBalanceComponent } from '../userBalance/userBalance.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   standalone: true,
-  imports: [userDropdownComponent, RouterModule],
+  imports: [userBalanceComponent, userDropdownComponent, RouterModule, CommonModule],
   styleUrls: ['./header.component.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class HeaderComponent{
-  @Input() title: string = ''; 
-  isMenuVisible$: Observable<boolean>; 
+  @Input() title: string = ''
+  @Input() hideToggle: boolean = false
+  @Input() hideUserDropdown: boolean = false
+  @Input() hideLink: boolean = false
+  isMenuVisible$: Observable<boolean>
   icon: string = ''; 
 
 

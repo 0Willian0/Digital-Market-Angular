@@ -17,7 +17,28 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { userAdminComponent } from './components/admin/userAdmin/userAdmin.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { productsAdminComponent } from './components/admin/productAdmin/productsAdmin.component';
+import { FormsModule } from '@angular/forms';
+import { NzTreeModule } from 'ng-zorro-antd/tree';
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzIconModule } from 'ng-zorro-antd/icon';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { productByCategoryComponent } from './components/product/ProductByCategory/productByCategory.component';
+import { ProductItemComponent } from './components/product/ProductItem/productItem.component';
+import { AllProductsComponent } from './components/home/AllProducts/allProducts.component';
+import { AuthComponent } from './components/auth/auth.component';
+import {localStorageSync} from 'ngrx-store-localstorage'
+import { MetaReducer} from '@ngrx/store';
 
+export function localStorageSyncReducer(reducer: any) {
+  return localStorageSync({ 
+    keys: [{ app: ['user', 'isMenuVisible'] }], 
+    rehydrate: true 
+  })(reducer);
+}
+
+
+export const metaReducers: MetaReducer<any>[] = [localStorageSyncReducer];
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,22 +48,32 @@ import { ReactiveFormsModule } from '@angular/forms';
     MenuComponent,
     userDropdownComponent,
     adminPageComponent,
-    userAdminComponent
+    userAdminComponent,
+    productsAdminComponent,
+    productByCategoryComponent,
+    ProductItemComponent,
+    AllProductsComponent,
+    AuthComponent
   ],
   imports: [
+    FormsModule,
+    NzIconModule,
+    NzInputModule,
+    NzTreeModule,
     ReactiveFormsModule,
     CommonModule,
     BrowserModule,
-    StoreModule.forRoot({ app: appReducer}),
+    StoreModule.forRoot({ app: appReducer}, {metaReducers}),
     StoreDevtoolsModule.instrument({ maxAge: 25 }),
     AppRoutingModule,
     RouterModule,
-    BrowserAnimationsModule, // Necessário para animações
+    BrowserAnimationsModule,
     ToastrModule.forRoot({
-      positionClass: 'toast-top-right', // Posicionamento das notificações
-      timeOut: 3000, // Tempo de exibição em milissegundos
+      positionClass: 'toast-top-right', 
+      timeOut: 3000, 
     }),
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })

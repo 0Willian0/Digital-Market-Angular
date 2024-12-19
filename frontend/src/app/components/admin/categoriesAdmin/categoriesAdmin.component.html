@@ -19,16 +19,19 @@
   
         <div class="col-md-6 col-sm-12">
           <div class="form-group">
-            <label for="category-parent">Categoria Pai:</label>
-            <select
-              id="category-parent"
-              formControlName="parentId"
-              class="form-control"
-              [disabled]="mode === 'remove'"
-            >
-              <option value="">Selecione...</option>
-              <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.name }}</option>
-            </select>
+              <label for="category-path">Categoria Pai:</label>
+              <select
+                formControlName="parentId"
+                id="category-path"
+                class="form-select"
+                [attr.aria-label]="'Selecionar categoria'"
+                [disabled]="mode === 'remove'"
+              >
+                <option value="">Selecione...</option>
+                <option *ngFor="let cat of categories" [value]="cat.id">
+                  {{ cat.name }}
+                </option>
+              </select>
           </div>
         </div>
       </div>

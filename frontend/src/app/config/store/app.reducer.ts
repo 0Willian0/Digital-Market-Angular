@@ -1,5 +1,5 @@
 import { createReducer, on } from '@ngrx/store';
-import { toggleMenu } from './app.actions';
+import { setUser, toggleMenu } from './app.actions';
 
 interface User{
   name:string
@@ -7,14 +7,12 @@ interface User{
 
 export interface AppState {
   isMenuVisible: boolean,
-  user: User
+  user: User | null
 }
 
 export const initialState: AppState = {
-  isMenuVisible: false,
-  user:{
-    name:'Yuna'
-  }
+  isMenuVisible: true,
+  user:null
 };
 
 export const appReducer = createReducer(
@@ -24,6 +22,14 @@ export const appReducer = createReducer(
     return {
       ...state,
       isMenuVisible: isVisible !== undefined ? isVisible : !state.isMenuVisible,
+    };
+  }),
+  
+  on(setUser, (state, { user }) => {
+    return {
+      ...state,
+      user,
+      isMenuVisible: !user,
     };
   })
 );

@@ -1,0 +1,17 @@
+<div class="product-item">
+  <div class="product-item-image d-none d-sm-block">
+    <img 
+      [src]="product.imageUrl ? product.imageUrl : '/assets/product.png'" 
+      height="150" 
+      width="150" 
+      alt="Product"
+    />
+  </div>
+  <div class="product-item-info">
+    <h2>{{ product.name }}</h2>
+    <p>R$ {{ product.price }}</p>
+    <button class="btn btn-success" (click)="save()">
+      <i class="fa fa-plus"></i> Carrinho
+    </button>
+  </div>
+</div>

@@ -11,6 +11,6 @@ import { ViewEncapsulation } from "@angular/core";
     encapsulation: ViewEncapsulation.None
 })
 export class pageTitleComponent{
-    @Input() main: string = ''
+    @Input() main: string | undefined
     @Input() icon: string = ''
 }

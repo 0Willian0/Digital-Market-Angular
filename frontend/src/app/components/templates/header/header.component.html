@@ -1,32 +1,19 @@
 <header class="header">
 
-  <a class="toggle" (click)="handleToggleMenu()">
+  <a class="toggle" (click)="handleToggleMenu()" *ngIf="!hideToggle">
     <i [class]="'fa fa-lg ' + icon"></i>
   </a>
   
-    <h1 class="title">
-        <a [routerLink]="'/home'">{{ title }}</a>
-    </h1>
-    
-  <app-userDropdown style="height: 100%;"></app-userDropdown>
+  <h1 class="title" *ngIf="!hideLink">
+      <a [routerLink]="'/home'">{{ title }}</a>
+  </h1>
 
-    <!-- Título, condição para Link -->
-    <!-- <h1 class="title">
-      <ng-container *ngIf="!hideUserDropdown; else plainTitle">
-        <a routerLink="/">
-          {{ title }}
-        </a>
-      </ng-container>
-      <ng-template #plainTitle>
-        {{ title }}
-      </ng-template>
-    </h1> -->
-  
-    <!-- Componentes do usuário, somente se hideUserDropdown não for verdadeiro -->
-    <!-- <ng-container *ngIf="!hideUserDropdown">
-      <app-user-balance></app-user-balance>
-      <app-user-cart></app-user-cart>
-      <app-user-dropdown></app-user-dropdown>
-    </ng-container> -->
+  <h1 class="title" *ngIf="hideLink">
+    {{ title }}
+  </h1>
+ 
+  <app-userBalance *ngIf="!hideUserDropdown"></app-userBalance>
+  <app-userDropdown style="height: 100%;" *ngIf="!hideUserDropdown"></app-userDropdown>
+
   </header>
   

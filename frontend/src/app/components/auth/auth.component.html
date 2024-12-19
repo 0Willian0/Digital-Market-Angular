@@ -1,0 +1,27 @@
+<div class="auth-content">
+    <div class="auth-modal">
+      <img src="assets\logo.png" width="200" alt="Logo" />
+      <hr />
+      <div class="auth-title">{{ showSignup ? 'Cadastro' : 'Login' }}</div>
+  
+      <ng-container *ngIf="showSignup">
+        <input [(ngModel)]="userData.name" type="text" placeholder="Nome" />
+      </ng-container>
+      
+      <input [(ngModel)]="userData.email" type="text" placeholder="E-mail" />
+      <input [(ngModel)]="userData.password" type="password" placeholder="Senha" />
+      
+      <ng-container *ngIf="showSignup">
+        <input [(ngModel)]="userData.confirmPassword" type="password" placeholder="Confirme a Senha" />
+      </ng-container>
+  
+      <button (click)="showSignup ? signup() : signin()">
+        {{ showSignup ? 'Registrar' : 'Entrar' }}
+      </button>
+  
+      <a href="#" (click)="toggleSignup(); $event.preventDefault()">
+        {{ showSignup ? 'Já possui cadastro? Acesse o Login!' : 'Não possui cadastro? Registre-se aqui!' }}
+      </a>
+    </div>
+  </div>
+  

@@ -35,7 +35,8 @@ export class categoriesAdminComponent implements OnInit{
         });
     }
 
-    ngOnInit() {
+
+    ngOnInit(): void {
         this.loadCategories();
     }
 
@@ -80,11 +81,16 @@ export class categoriesAdminComponent implements OnInit{
             return;
         }
         
-        const category = {
-            id: this.categoryForm.get('id')?.value,
+        const category:any = {
             name: this.categoryForm.get('name')?.value || '',
-            parentId: this.categoryForm.get('parentId')?.value || ''
+            parentId: this.categoryForm.get('parentId')?.value || null
         };
+        
+        const id = this.categoryForm.get('id')?.value;
+
+        if (id) {
+            category.id = id;
+        }
 
         this.apiService.saveCategory(category).pipe(
             catchError((error) => {

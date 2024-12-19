@@ -19,12 +19,12 @@ module.exports = app =>{
             app.db('products')
             .update(product)
             .where({id: product.id})
-            .then(_ => res.status(204).send())
+            .then(_ => res.status(200).json({ success: true}))
             .catch(err => res.status(500).send(err))
         }else{
             app.db('products')
             .insert(product)
-            .then(_ => res.status(204).send())
+            .then(_ => res.status(201).json({ success: true}))
             .catch(err => res.status(500).send(err))
         }
     }

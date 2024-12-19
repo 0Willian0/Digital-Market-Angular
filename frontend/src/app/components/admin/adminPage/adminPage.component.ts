@@ -5,6 +5,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatCardModule } from '@angular/material/card';
 import { userAdminComponent } from "../userAdmin/userAdmin.component";
 import { categoriesAdminComponent } from "../categoriesAdmin/categoriesAdmin.component";
+import { productsAdminComponent } from "../productAdmin/productsAdmin.component";
 
 @Component({
     selector:'app-adminPage',
@@ -13,6 +14,7 @@ import { categoriesAdminComponent } from "../categoriesAdmin/categoriesAdmin.com
     imports: [pageTitleComponent, 
         userAdminComponent,
         categoriesAdminComponent,
+        productsAdminComponent,
         MatTabsModule, 
         MatCardModule, 
         CommonModule],
