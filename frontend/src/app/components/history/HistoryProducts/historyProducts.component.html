@@ -1,0 +1,12 @@
+<div class="history-products">
+    <app-pageTitle [icon]="'fa fa-history'" [main]="formattedDate "></app-pageTitle>
+    <br>
+    <ul>
+        <li *ngFor="let product of products" [attr.key]="product.id">
+          <app-historyItem [product]="product"></app-historyItem>
+        </li>
+    </ul> 
+    <h2>
+      Total Gasto: R${{price.totalPrice}}
+    </h2>
+</div>

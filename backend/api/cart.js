@@ -10,7 +10,7 @@ module.exports = app =>{
         }
             app.db('carts')
             .insert(cart)
-            .then(_ => res.status(204).send())
+            .then(_ => res.status(201).json({success: true}))
             .catch(err => res.status(500).send(err))
     }
 

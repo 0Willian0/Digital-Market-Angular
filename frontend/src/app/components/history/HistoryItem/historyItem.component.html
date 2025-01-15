@@ -1,5 +1,5 @@
-<div class="product-item">
-    <div class="product-item-image d-none d-sm-block">
+<div class="history-item">
+    <div class="history-item-image d-none d-sm-block">
       <img 
         [src]="product.imageUrl ? product.imageUrl : '/assets/product.png'" 
         height="150" 
@@ -7,12 +7,9 @@
         alt="Product"
       />
     </div>
-    <div class="product-item-info">
+    <div class="history-item-info">
       <h2>{{ product.name }}</h2>
       <p>R$ {{ product.price }}</p>
-      <button class="btn btn-success" (click)="remove()">
-        <i class="fa fa-minus"></i> Remover
-      </button>
+      <p>Horário: {{formatTime}}</p>
     </div>
   </div>
-  

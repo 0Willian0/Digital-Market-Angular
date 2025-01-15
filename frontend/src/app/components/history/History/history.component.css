@@ -1,4 +1,4 @@
-.cart ul{
+.history ul{
     display: flex;
     flex-direction: row;
     list-style: none;
@@ -8,11 +8,7 @@
     justify-content: left;
 }
 
-.cart li{
+.history li{
     flex-basis: 300px;
     text-align: left;
-}
-
-.cart h3{
-    text-align: center;
 }

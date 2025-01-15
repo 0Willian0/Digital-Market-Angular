@@ -1,0 +1,9 @@
+<div class="history">
+    <app-pageTitle [icon]="'fa fa-history'" [main]="'Histórico'"/>
+    <br>
+    <ul>
+        <li *ngFor="let history of histories" [attr.key]="history.id">
+          <app-historyData [history]="history"></app-historyData>
+        </li>
+    </ul>  
+</div>

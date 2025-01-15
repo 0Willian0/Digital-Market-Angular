@@ -1,0 +1,21 @@
+<div class="cart">
+    <app-pageTitle [icon]="'fa fa-shopping-cart'" [main]="'Carrinho'"/>
+    <br>
+    <ul>
+        <li *ngFor="let product of products" [attr.key]="product.id">
+          <app-cartItem [product]="product"></app-cartItem>
+        </li>
+    </ul> 
+
+    <h4 *ngIf="products.length != 0">
+      Preço Total: R${{price?.totalPrice}}
+    </h4>
+    <button class="btn btn-success" *ngIf="products.length != 0" (click)="pay()">
+        Pagar
+    </button>
+
+    <h3 *ngIf="products.length == 0">
+      Carrinho Vazio
+    </h3>
+    
+</div>

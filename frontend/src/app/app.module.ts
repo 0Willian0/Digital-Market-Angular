@@ -29,6 +29,11 @@ import { AllProductsComponent } from './components/home/AllProducts/allProducts.
 import { AuthComponent } from './components/auth/auth.component';
 import {localStorageSync} from 'ngrx-store-localstorage'
 import { MetaReducer} from '@ngrx/store';
+import { CartComponent } from './components/cart/Cart/cart.component';
+import { CartItemComponent } from './components/cart/CartItem/cartItem.component';
+import { HistoryDataComponent } from './components/history/HistoryData/historyData.component';
+import { HistoryComponent } from './components/history/History/history.component';
+import { HistoryItemComponent } from './components/history/HistoryItem/historyItem.component';
 
 export function localStorageSyncReducer(reducer: any) {
   return localStorageSync({ 
@@ -53,7 +58,12 @@ export const metaReducers: MetaReducer<any>[] = [localStorageSyncReducer];
     productByCategoryComponent,
     ProductItemComponent,
     AllProductsComponent,
-    AuthComponent
+    AuthComponent,
+    CartComponent,
+    CartItemComponent,
+    HistoryDataComponent,
+    HistoryComponent,
+    HistoryItemComponent
   ],
   imports: [
     FormsModule,

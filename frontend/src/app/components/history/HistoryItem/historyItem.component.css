@@ -1,4 +1,4 @@
-.product-item{
+.history-item{
     display: flex;
     flex-direction: row;
     border-radius: 8px;
@@ -10,27 +10,27 @@
     box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15);
 }
 
-.product-item-info h2{
+.history-item-info h2{
     font-size: 1.7rem;
 }
 
-.product-item-image{
+.history-item-image{
     padding-right: 20px;
     margin-right: 20px;
     border-right: 1px solid #AAA;
 }
 
-.product-item-image img{
+.history-item-image img{
     border-radius: 10px;
 }
 
-.product-item-info{
+.history-item-info{
     display: flex;
     align-self: stretch;
     flex-direction: column;
 }
 
-.product-item-info p{
+.history-item-info p{
     flex: 1;
     color: #555;
     font-size: 1.1rem;

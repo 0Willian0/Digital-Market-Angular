@@ -8,12 +8,13 @@ import { userDropdownComponent } from '../userDropdown/userDropdown.component';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { userBalanceComponent } from '../userBalance/userBalance.component';
+import { userCartComponent } from '../userCart/userCart.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   standalone: true,
-  imports: [userBalanceComponent, userDropdownComponent, RouterModule, CommonModule],
+  imports: [userBalanceComponent, userDropdownComponent, userCartComponent, RouterModule, CommonModule],
   styleUrls: ['./header.component.css'],
   encapsulation: ViewEncapsulation.None
 })
