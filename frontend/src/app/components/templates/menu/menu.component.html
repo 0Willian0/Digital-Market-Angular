@@ -8,13 +8,14 @@
       name="treeFilter"
       [(ngModel)]="treeFilter"
       (ngModelChange)="onFilterChange($event)"
-      class="filter" />
+      class="filter"
+    />
   </div>
 
-  <nz-tree
+    <nz-tree
     [nzData]="filteredTreeData"
-    nzDefaultExpandAll
-    (nzClick)="onNodeSelect($event)"
-  >
+    [nzShowExpand]="true"
+    [nzExpandAll]="true"
+    (nzClick)="onNodeSelect($event)">
   </nz-tree>
 </aside>

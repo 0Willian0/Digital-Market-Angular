@@ -57,7 +57,7 @@ export class MenuComponent implements OnInit {
         }),
         catchError(error => {
           console.error('Erro ao buscar dados:', error);
-          return of([]);
+          return of([]); 
         })
       )
       .subscribe();
@@ -80,9 +80,9 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  onFilterChange(event: Event): void {
-    const input = event.target as HTMLInputElement | null;
-    this.treeFilter = input?.value ?? ''; 
+  onFilterChange(filter: string): void {
+    this.treeFilter = filter;
+    this.filteredTreeData = this.filterTreeData(this.treeFilter);
   }
 
   filterTreeData(filter: string): NzTreeNodeOptions[] {
