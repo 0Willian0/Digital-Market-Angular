@@ -46,6 +46,13 @@ export class MenuComponent implements OnInit {
     });
   }
 
+  shouldHide(): boolean {
+    const json = localStorage.getItem('userKey');
+    const userData = json ? JSON.parse(json) : null;
+  
+    return !userData?.name;
+  }
+
   fetchTreeData(): void {
     const url = `${this.baseApiUrl}/categories/tree`;
     this.http

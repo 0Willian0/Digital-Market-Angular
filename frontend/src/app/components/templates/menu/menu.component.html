@@ -1,4 +1,4 @@
-<aside class="menu" [hidden]="!(isMenuVisible$ | async)">
+<aside class="menu" [hidden]="!(isMenuVisible$ | async) || shouldHide()">
   <div class="menu-filter">
       <i nz-icon nzType="search"></i>
       <input

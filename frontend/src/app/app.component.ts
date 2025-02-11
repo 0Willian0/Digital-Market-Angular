@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<{ app: AppState }>, private authService: AuthService) {
     this.isMenuVisible$ = this.store.select(selectIsMenuVisible);
     this.user$ = this.store.select(selectUser);
+    
 
     this.isMenuVisible$.subscribe(isVisible => {
       this.menu = isVisible ? false : true
