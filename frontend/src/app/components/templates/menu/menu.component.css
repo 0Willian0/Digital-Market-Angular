@@ -1,119 +1,152 @@
-.menu{
-    grid-area: menu;
-    background: linear-gradient(to right, #232526, #414345);
+.menu {
+  grid-area: menu;
+  background: linear-gradient(to right, #232526, #414345);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
 
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-  
-  .menu a,
-  .menu a:hover{
-    color: #FFF;
-    text-decoration: none;
-  }
+.menu .menu-filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  position: relative;
+  z-index: 1;
+  margin: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #AAA;
+}
 
-  .ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected{
-    background-color: transparent;
-  }
+.menu-filter {
+  position: relative;
+  z-index: 10; 
+}
 
-  .ant-tree .ant-tree-node-content-wrapper:hover{
-    background-color: gray;
-  }
+.filter{
+  color: #CCC;
+  font-size: 1.3rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+}
 
-  .ant-tree-indent:hover{
-    background-color: transparent;
-  }
+.ant-input{
+  color: #CCC;
+  font-size: 1.3rem;
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+}
 
-  .menu .tree-node.selected > .tree-content,
-  .menu .tree-node .tree-content:hover{
-    background-color: rgba(255,255,255,0.2);
-  }
+.menu a,
+.menu a:hover {
+  color: #FFF;
+  text-decoration: none;
+}
 
-  .nz-tree-node:hover{
-    background-color: transparent;
-  }
+.ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected {
+  background-color: transparent;
+}
 
-  .tree-arrow.has-child{
-    filter: brightness(2);
-  }
-  
-  .menu .menu-filter{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-  
-    margin: 20px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid #AAA;
-  }
-  
-  .menu .menu-filter i{
-    color: #AAA;
-    margin-right: 10px;
-    padding-top: 8px;
-  }
-  
-  .menu input{
-    color: #CCC;
-    font-size: 1.3rem;
-    border: none;
-    outline: none;
-    width: 100%;
-    background: transparent;
-  }
-  
-  .ant-input:focus, .menu input:focus {
-    outline: none;
-    box-shadow: none;
-  }
-  
-  
-  .tree-filter-empty{
-    color: #CCC;
-    font-size: 1.3rem;
-    margin-left: 20px;
-  }
-  
-  .ant-tree-title{
-    font-size: 20px;
-    color:#FFF;
-  }
-  
-  .ant-tree-list-holder-inner{
-    background: linear-gradient(to right, #232526, #414345);
-  }
-  
-  .ant-tree-switcher{
-    size: 60px;
-    color:#FFF;
-  }
-  
-  :where(.css-dev-only-do-not-override-qnu6hi).ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected, 
-  :where(.css-dev-only-do-not-override-qnu6hi).ant-tree .ant-tree-checkbox+span.ant-tree-node-selected{
-    background-color: transparent;
-  }
-  
-  :where(.css-dev-only-do-not-override-qnu6hi).ant-input-outlined:focus, 
-  :where(.css-dev-only-do-not-override-qnu6hi).ant-input-outlined:focus-within{
-    color:#FFFF;
-    background-color: transparent;
-  }
-  
-  .ant-input:hover{
-    background-color: transparent;
-  }
+.ant-tree .ant-tree-node-content-wrapper:hover {
+  background-color: gray;
+}
 
-  .ant-input::placeholder{
-    color:#FFF;
-  }
-  
-  :where(.css-dev-only-do-not-override-qnu6hi).ant-tree .ant-tree-switcher{
-    width: 40px;
-  }
-  
-  svg{
-    width: 20px;
-    height: 20px;
-  }
+.ant-tree-indent:hover {
+  background-color: transparent;
+}
+
+.menu .tree-node.selected > .tree-content,
+.menu .tree-node .tree-content:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nz-tree-node:hover {
+  background-color: transparent;
+}
+
+.tree-arrow.has-child {
+  filter: brightness(2);
+}
+
+.ant-tree-list-holder-inner {
+  background: linear-gradient(to right, #232526, #414345);
+}
+
+.ant-tree-switcher {
+  color: #FFF;
+}
+
+.ant-tree-switcher .ant-select-tree-switcher-icon, .ant-tree-switcher .ant-tree-switcher-icon {
+  font-size: 20px;
+}
+
+.svg {
+  width: 30px;
+  height: 30px;
+}
+
+.menu .menu-filter i {
+  color: #aaa;
+  margin-right: 10px;
+  padding-top: 8px;
+}
+
+.ant-tree-title {
+  font-size: 20px;
+  color: #fff;
+}
+
+.ant-tree-list-holder-inner {
+  background: linear-gradient(to right, #232526, #414345);
+}
+
+:where(.css-dev-only-do-not-override-qnu6hi) .ant-tree .ant-tree-node-content-wrapper.ant-tree-node-selected,
+:where(.css-dev-only-do-not-override-qnu6hi) .ant-tree .ant-tree-checkbox + span.ant-tree-node-selected {
+  background-color: transparent;
+}
+
+:where(.css-dev-only-do-not-override-qnu6hi) .ant-tree .ant-tree-switcher {
+  width: 80px;
+}
+
+
+.my-custom-class {
+  color: #ccc;
+  font-size: 1.3rem;
+  border: none;
+  background: transparent;
+  width: 100%;
+  min-width: 100px; 
+  padding: 8px 10px;
+  z-index: 10; 
+  pointer-events: auto; 
+}
+
+.my-custom-class:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.my-custom-class::placeholder {
+  color: #ccc; 
+  opacity: 1; 
+}
+
+ .my-custom-input .ant-input {
+  color: #ccc;
+  font-size: 1.3rem;
+  border: 1px solid #444;
+  background: #232526;
+}
+
+.my-custom-input .ant-input::placeholder {
+  color: #aaa;
+}
+
+

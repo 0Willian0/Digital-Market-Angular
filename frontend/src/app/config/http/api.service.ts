@@ -9,6 +9,8 @@ import { Price } from '../../model/Price';
 import { History } from '../../model/HistoryData.model';
 import { Data } from '@angular/router';
 import { ProductData } from '../../model/ProductData.model';
+import { userBalanceComponent } from '../../components/templates/userBalance/userBalance.component';
+import { Balance } from '../../model/Balance.model';
 
 export const userKey = '__Market_user';
 
@@ -116,6 +118,10 @@ export class ApiService {
 
     getTotalPrice(userId: number): Observable<Price>{
         return this.http.get<Price>(`${this.baseApiUrl}/cartPrice/${userId}`)
+    }
+
+    getBalance(userId: number): Observable<Balance>{
+        return this.http.get<Balance>(`${this.baseApiUrl}/users/${userId}`)
     }
 
     putBalance(balance: number, userId: number): Observable<any> {

@@ -13,56 +13,63 @@ import { CommonModule } from '@angular/common';
 import { AppState } from '../../../config/store/app.reducer';
 import { selectIsMenuVisible } from '../../../config/store/app.selectors';
 
-
 @Component({
   selector: 'app-menu',
   standalone: true,
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css'],
   imports: [FormsModule, NzIconModule, NzInputModule, NzTreeModule, CommonModule],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class MenuComponent implements OnInit {
   private baseApiUrl = 'http://localhost:3001';
   treeData: NzTreeNodeOptions[] = [];
   filteredTreeData: NzTreeNodeOptions[] = [];
   treeFilter: string = '';
-  isMenuVisible$: Observable<boolean>; 
-  icon: string = ''; 
+  isMenuVisible$: Observable<boolean>;
 
-  constructor(private store: Store<{ app: AppState }>,private http: HttpClient,
-    private router: Router,) {
-      this.isMenuVisible$ = this.store.select(selectIsMenuVisible);
+  constructor(
+    private store: Store<{ app: AppState }>,
+    private http: HttpClient,
+    private router: Router
+  ) {
+    this.isMenuVisible$ = this.store.select(selectIsMenuVisible);
   }
-  
+
   ngOnInit(): void {
     this.fetchTreeData();
-  }
-  
-  fetchTreeData(): void {
-    const url = `${this.baseApiUrl}/categories/tree`;
-    this.http.get(url).pipe(
-      tap((data: any) => {
-        this.treeData = this.formatTreeData(data);  
-        this.filteredTreeData = [...this.treeData]; 
-      }),
-      catchError((error) => {
-        console.error('Erro ao buscar dados:', error);
-        return of([]); 
-      })
-    ).subscribe();
+
+    this.isMenuVisible$.subscribe(isVisible => {
+      if (isVisible) {
+        this.filteredTreeData = this.filterTreeData(this.treeFilter); 
+      }
+    });
   }
 
+  fetchTreeData(): void {
+    const url = `${this.baseApiUrl}/categories/tree`;
+    this.http
+      .get(url)
+      .pipe(
+        tap((data: any) => {
+          this.treeData = this.formatTreeData(data);
+          this.filteredTreeData = [...this.treeData]; 
+        }),
+        catchError(error => {
+          console.error('Erro ao buscar dados:', error);
+          return of([]);
+        })
+      )
+      .subscribe();
+  }
 
   formatTreeData(nodes: any[]): NzTreeNodeOptions[] {
     return nodes.map(node => ({
       key: node.id,
       title: node.name,
-      children: node.children ? this.formatTreeData(node.children) : []
+      children: node.children ? this.formatTreeData(node.children) : [],
     }));
   }
-
 
   onNodeSelect(event: any): void {
     const node = event.node;
@@ -73,25 +80,25 @@ export class MenuComponent implements OnInit {
     }
   }
 
-
-  onFilterChange(value: string): void {
-    this.treeFilter = value;
-    this.filterTreeData(value);  
+  onFilterChange(event: Event): void {
+    const input = event.target as HTMLInputElement | null;
+    this.treeFilter = input?.value ?? ''; 
   }
 
-
-  filterTreeData(filter: string): void {
+  filterTreeData(filter: string): NzTreeNodeOptions[] {
     const filterNodes = (nodes: NzTreeNodeOptions[]): NzTreeNodeOptions[] => {
       return nodes
         .map(node => ({
           ...node,
-          children: filterNodes(node.children || [])
+          children: filterNodes(node.children || []),
         }))
-        .filter(node =>
-          node.title.toLowerCase().includes(filter.toLowerCase()) || (node.children && node.children.length > 0)
+        .filter(
+          node =>
+            node.title.toLowerCase().includes(filter.toLowerCase()) ||
+            (node.children && node.children.length > 0)
         );
     };
 
-    this.filteredTreeData = filter ? filterNodes(this.treeData) : [...this.treeData];
+    return filter ? filterNodes(this.treeData) : [...this.treeData];
   }
 }
